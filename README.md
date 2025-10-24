@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Nz-dearm-builder-main
 =======
 # Welcome to your Lovable project
@@ -75,3 +76,6 @@ To connect a domain, navigate to Project > Settings > Domains and click Connect 
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
 >>>>>>> 8d2ece2 (Initial commit)
+=======
+# Nz-dreamer
+>>>>>>> 5635e599971f3e9f76d8a073ce57c5d97983b356
