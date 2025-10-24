@@ -1,105 +1,75 @@
-import { Search, MapPin, Calendar, Users } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import heroImage from "@/assets/hero-nz.jpg";
 
 const Hero = () => {
-  const [destination, setDestination] = useState("");
-  const [checkIn, setCheckIn] = useState("");
-  const [travelers, setTravelers] = useState("");
+  const scrollToForm = () => {
+    const formElement = document.getElementById("inquiry-form");
+    formElement?.scrollIntoView({ behavior: "smooth" });
+  };
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log({ destination, checkIn, travelers });
+  const handleCallClick = () => {
+    window.location.href = "tel:+919876543210";
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      >
-        <source src="https://cdn.coverr.co/videos/coverr-scenic-aerial-view-of-a-tropical-island-5360/1080p.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-primary/80 z-[1]" />
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Hero Background Image */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(${heroImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
       
+      {/* Hero Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
-        <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-sm backdrop-blur-md border border-white/20">
-          <span className="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
-          AI-Powered Travel Planning • 24/7 Support
-        </div>
-        <h1 className="font-heading text-balance text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in leading-tight">
-          Discover Your Perfect
-          <br />
-          <span className="bg-gradient-to-r from-accent via-accent-secondary to-accent bg-clip-text text-transparent">
-            GlobalEscapes Journey
-          </span>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in leading-tight">
+          New Zealand Gold Specialists: Your Journey, 
+Polished to Perfection. <br />
+          <span className="text-accent">with the Experts</span>
         </h1>
         
-        <p className="text-balance text-lg md:text-xl mb-10 max-w-2xl mx-auto opacity-95 animate-fade-in">
-          Luxury travel planning made effortless. Custom vacations, exclusive hotels, seamless flights — all tailored for you.
+        <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-95 animate-fade-in">
+          Honeymoon, Family, Friends & Group Tours — tailor-made just for you.
         </p>
         
-        <div className="max-w-5xl mx-auto mb-12 animate-fade-in-up">
-          <form onSubmit={handleSearch} className="glass backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6 shadow-elevated">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="flex items-center gap-3 bg-white/90 rounded-lg px-4 py-3">
-                <MapPin className="h-5 w-5 text-primary" />
-                <Input
-                  type="text"
-                  placeholder="Where to?"
-                  value={destination}
-                  onChange={(e) => setDestination(e.target.value)}
-                  className="border-0 bg-transparent p-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0"
-                />
-              </div>
-              <div className="flex items-center gap-3 bg-white/90 rounded-lg px-4 py-3">
-                <Calendar className="h-5 w-5 text-primary" />
-                <Input
-                  type="date"
-                  placeholder="Check-in"
-                  value={checkIn}
-                  onChange={(e) => setCheckIn(e.target.value)}
-                  className="border-0 bg-transparent p-0 text-foreground focus-visible:ring-0"
-                />
-              </div>
-              <div className="flex items-center gap-3 bg-white/90 rounded-lg px-4 py-3">
-                <Users className="h-5 w-5 text-primary" />
-                <Input
-                  type="number"
-                  placeholder="Travelers"
-                  value={travelers}
-                  onChange={(e) => setTravelers(e.target.value)}
-                  className="border-0 bg-transparent p-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0"
-                />
-              </div>
-              <Button
-                type="submit"
-                size="lg"
-                className="bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 text-white font-semibold py-6"
-              >
-                <Search className="mr-2 h-5 w-5" />
-                Search
-              </Button>
-            </div>
-          </form>
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in">
+          <Button 
+            size="lg"
+            onClick={handleCallClick}
+            className="bg-accent hover:bg-accent/90 text-secondary font-semibold text-lg px-8 py-6 shadow-elevated"
+          >
+            <Phone className="mr-2 h-5 w-5" />
+            Call Us Now
+          </Button>
+          <Button 
+            size="lg"
+            variant="outline"
+            onClick={scrollToForm}
+            className="bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-primary font-semibold text-lg px-8 py-6"
+          >
+            <Mail className="mr-2 h-5 w-5" />
+            Get Free Itinerary
+          </Button>
         </div>
         
-        <div className="flex flex-wrap justify-center gap-8 text-sm md:text-base opacity-95">
+        {/* Trust Badges */}
+        <div className="flex flex-wrap justify-center gap-6 text-sm md:text-base opacity-95">
           <div className="flex items-center gap-2">
             <span className="text-accent text-xl">✓</span>
-            <span>2000+ Destinations</span>
+            <span>Certified NZ Specialist</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-accent text-xl">✓</span>
-            <span>100k+ Happy Travelers</span>
+            <span>500+ Happy Travellers</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-accent text-xl">★</span>
-            <span>4.9/5 Rating · 10k+ Reviews</span>
+            <span>4.9 Rated(Authorized New Zealand Tourism Partner )</span>
           </div>
         </div>
       </div>
